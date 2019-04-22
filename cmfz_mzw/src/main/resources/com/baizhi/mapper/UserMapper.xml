@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+     namespace 写Dao接口
+     insert标签 添加  update标签更改   delete 删除
+     标签中写 sql语句
+-->
+
+<mapper namespace="com.baizhi.cmfz_mzw.dao.UserDao">
+
+    <select id="selectUserRegist" resultType="int">
+          select count(*) from user where datediff(sysdate(),create_date) &lt; #{tinahsu}
+    </select>
+
+    <select id="selectProBysex" resultType="com.baizhi.cmfz_mzw.viewObject.ProvinceVIewObj">
+        select count(*) value, province name from user WHERE sex=#{sex} GROUP BY province
+    </select>
+
+</mapper>

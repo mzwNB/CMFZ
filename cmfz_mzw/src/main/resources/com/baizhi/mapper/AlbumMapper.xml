@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+     namespace 写Dao接口
+     insert标签 添加  update标签更改   delete 删除
+     标签中写 sql语句
+-->
+
+<mapper namespace="com.baizhi.cmfz_mzw.dao.AlbumDao">
+
+
+    <select id="selectAllAlbum" resultMap="AlbumMap">
+           select t1.id aid,t1.title atitle,t2.* from album t1
+           left join chapter t2
+            on t1.id =t2.album_id
+    </select>
+
+    <resultMap id="AlbumMap" type="com.baizhi.cmfz_mzw.viewObject.AlbumDto">
+        <result property="id" column="aid"/>
+        <result property="title" column="atitle"/>
+        <collection property="children" ofType="Chapter">
+            <result property="id" column="id"/>
+            <result property="title" column="title"/>
+            <result property="size" column="size"/>
+            <result property="duration" column="duration"/>
+            <result property="albumId" column="album_id"/>
+            <result property="publishDate" column="publish_date"/>
+            <result property="chapterPath" column="chapter_path"/>
+         </collection>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+     namespace 写Dao接口
+     insert标签 添加  update标签更改   delete 删除
+     标签中写 sql语句
+-->
+
+<mapper namespace="com.baizhi.cmfz_mzw.dao.MenuDao">
+
+    <select id="selectAllMenu" resultMap="MenuMap">
+        select t1.id pid,t1.title p_title,t1.icon_cls p_icon,t2.*
+        from menu t1
+        inner join menu t2
+        on t1.id = t2.parent_id
+
+    </select>
+    <resultMap id="MenuMap" type="com.baizhi.cmfz_mzw.enetity.Menu">
+        <result property="id" column="p_id"></result>
+        <result property="title" column="p_title"></result>
+        <result property="iconCls" column="p_icon"></result>
+       <collection property="list" ofType="com.baizhi.cmfz_mzw.enetity.Menu">
+           <result property="id" column="id"></result>
+           <result property="title" column="title"></result>
+           <result property="iconCls" column="icon_cls"></result>
+           <result property="parent_id" column="parent_id"></result>
+           <result property="url" column="jsp_url"></result>
+       </collection>
+
+    </resultMap>
+
+</mapper>

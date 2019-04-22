@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+     namespace 写Dao接口
+     insert标签 添加  update标签更改   delete 删除
+     标签中写 sql语句
+-->
+
+<mapper namespace="com.baizhi.cmfz_mzw.dao.BannerDao">
+
+
+    <select id="selectAllBanner" resultMap="BannerMap">
+          select * from  banner
+    </select>
+    <resultMap id="BannerMap" type="Banner">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="imgPath" column="img_path"/>
+        <result property="createTime" column="create_date"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+</mapper>
