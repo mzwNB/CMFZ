@@ -19,6 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @TableName("album")
 public class Album implements Serializable {
+
     @TableId(type = IdType.AUTO)
     private Integer id;
     private String title;

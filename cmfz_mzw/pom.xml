@@ -141,6 +141,12 @@
             <artifactId>hutool-all</artifactId>
             <version>4.5.6</version>
         </dependency>
+        <!--goeasy-->
+        <dependency>
+            <groupId>io.goeasy</groupId>
+            <artifactId>goeasy-sdk</artifactId>
+            <version>0.3.8</version>
+        </dependency>
 
     </dependencies>
 
@@ -152,5 +158,12 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>goeasy</id>
+            <name>goeasy</name>
+            <url>http://maven.goeasy.io/content/repositories/releases/</url>
+        </repository>
+    </repositories>
 
 </project>

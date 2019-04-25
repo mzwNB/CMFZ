@@ -3,7 +3,6 @@ package com.baizhi.cmfz_mzw.controller;
 import com.baizhi.cmfz_mzw.dao.BannerDao;
 import com.baizhi.cmfz_mzw.enetity.Banner;
 import com.baizhi.cmfz_mzw.service.BannerService;
-import com.baomidou.mybatisplus.extension.api.R;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -34,11 +33,13 @@ public class BannerController {
         return  bannerService.selectAllBanner(page,rows);
     }
     @RequestMapping("insert")
-    public Map insert(Banner banner, MultipartFile imgFile){
+    public Map insert(Banner banner, MultipartFile imgFile, HttpServletRequest request) {
         Map map =new HashMap();
         try {
             if(imgFile!=null){
                 String name = imgFile.getOriginalFilename();
+                String realPath = request.getSession().getServletContext().getRealPath("/");
+                System.out.println(realPath);
                 imgFile.transferTo(new File("D:\\CMFZ\\cmfz_mzw\\src\\main\\webapp\\img\\shouye\\"+name));
                 banner.setImgPath("/img/shouye/"+name);
                 bannerService.insertBanner(banner);

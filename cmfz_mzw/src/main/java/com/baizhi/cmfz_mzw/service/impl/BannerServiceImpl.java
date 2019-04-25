@@ -24,6 +24,7 @@ public class BannerServiceImpl implements BannerService {
         System.out.println(page+"=============="+rows);
         HashMap map = new HashMap<>();
         PageHelper.startPage(page,rows);
+        System.out.println(bannerDao.selectAllBanner());
         PageInfo<Banner> pageInfo =new PageInfo<>(bannerDao.selectAllBanner());
         List<Banner> list = pageInfo.getList();
         long total = pageInfo.getTotal();

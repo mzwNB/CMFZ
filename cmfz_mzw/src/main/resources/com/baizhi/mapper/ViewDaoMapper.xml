@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+     namespace 写Dao接口
+     insert标签 添加  update标签更改   delete 删除
+     标签中写 sql语句
+-->
+
+<mapper namespace="com.baizhi.cmfz_mzw.dao.UserViewDao">
+    <insert id="insertOne">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user(id,phone,password,create_date) values (null,#{phone},#{password},sysdate())
+    </insert>
+
+
+</mapper>

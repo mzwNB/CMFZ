@@ -11,6 +11,7 @@
     <a id="addAlbum" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">添加专辑</a>
     <a id="addChapter" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">添加章节</a>
     <a id="download" class="easyui-linkbutton" data-options="iconCls:'icon-save'">下载音频</a>
+    <a id="excelDownload" class="easyui-linkbutton" data-options="iconCls:'icon-save'">导出专辑表</a>
 </div>
 <div id="albumInfo">
     <p>专辑名称：&nbsp; <span id="albumTitle"></span></p>
@@ -229,6 +230,9 @@
                 window.location.href="${pageContext.request.contextPath}/chapter/download?id="+chapterid;
             }
 
+        })
+        $("#excelDownload").click(function () {
+            window.location.href = "${pageContext.request.contextPath}/album/downloadAblum";
         })
     })
 </script>
